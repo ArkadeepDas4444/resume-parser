@@ -24,7 +24,7 @@ def is_probable_heading(line: str) -> bool:
         return False
 
     # Avoid long normal sentences
-    if len(stripped.split()) > 6:
+    if len(stripped.split()) > 6 or len(stripped) > 30:
         return False
 
     return True

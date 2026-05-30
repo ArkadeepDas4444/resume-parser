@@ -1,0 +1,31 @@
+B.Tech
+BTech
+Bachelor of Technology
+M.Tech
+MTech
+Master of Technology
+B.E
+BE
+Bachelor of Engineering
+M.E
+ME
+Master of Engineering
+B.Sc
+BSc
+Bachelor of Science
+M.Sc
+MSc
+Master of Science
+BCA
+MCA
+MBA
+Ph.D
+PhD
+Class X
+Class XII
+Secondary
+Senior Secondary
+Higher Secondary
+ICSE
+ISC
+CBSE
