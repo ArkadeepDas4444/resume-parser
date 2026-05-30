@@ -2,7 +2,7 @@ from pathlib import Path
 
 SKILLS_FILE = Path(__file__).resolve().parents[1] / "resources" / "skills.txt"
 
-def load_skills(file_path: str) -> list[str]:
+def load_skills(file_path: str | Path) -> list[str]:
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             return [

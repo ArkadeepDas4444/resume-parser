@@ -3,8 +3,10 @@ from parser.preprocess import preprocess_resume_text
 from parser.section_detector import detect_sections
 from parser.skills_extractor import extract_skills
 from parser.education_extractor import extract_education
+from parser.contact_extractor import extract_contact_info
+from parser.experience_extractor import extract_experience
 
-file_path = "backend/sample_resumes/Resume with Table IITG.pdf"
+file_path = "backend/sample_resumes/Admont-Resume-Green.docx"
 
 raw_text = extract_text_from_file(file_path)
 # print("\n---------- RAW TEXT ----------\n")
@@ -12,7 +14,7 @@ raw_text = extract_text_from_file(file_path)
 
 processed = preprocess_resume_text(raw_text)
 print("\n---------- CLEAN TEXT ----------\n")
-print(processed['clean_text'] + "\n")
+print(f"{processed['clean_text']}\n")
 
 sections = detect_sections(processed["lines"])
 print("\n---------- SECTIONS ----------")
@@ -23,9 +25,19 @@ for section, content in sections.items():
 
 print()
 
-skills = extract_skills("\n".join(sections.get("skills", "")))
+skills = extract_skills("\n".join(sections.get("skills", [])))
 print("\n---------- SKILLS ----------\n")
-print(skills + "\n")
+print(f"{skills}\n")
 
 education = extract_education(sections.get("education", []))
-print(f"\n---------- EDUCATION DATA ----------\n\n{education}\n")
+print("\n---------- EDUCATION DATA ----------\n")
+print(f"{education}\n")
+
+contact_info = extract_contact_info("\n".join(sections.get("header", [])))
+print("\n---------- CONTACT INFO ----------\n")
+print(f"{contact_info}\n")
+
+experience_lines = sections.get("experience", []) + sections.get("positions", [])
+experience = extract_experience(experience_lines)
+print("\n---------- EXPERIENCE ----------\n")
+print(f"{experience}\n")

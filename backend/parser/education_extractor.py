@@ -1,22 +1,7 @@
 import re
-
-DEGREE_PATTERNS = [
-    r"\bB\.?\s?Tech\.?\b",
-    r"\bM\.?\s?Tech\.?\b",
-    r"\bB\.?E\.?\b",
-    r"\bM\.?E\.?\b",
-    r"\bB\.?\s?Sc\b",
-    r"\bM\.?\s?Sc\b",
-    r"\bMBA\b",
-    r"\bPh\.?\s?D\b",
-    r"\bClass\s*[-–]?\s*XII\b",
-    r"\bClass\s*[-–]?\s*X\b",
-    r"\b(?:Senior|Higher)(?:\s+|\s*[-–]\s*)Secondary\b",
-    r"\bSecondary\b",
-]
+from resources.degree_patterns import DEGREE_PATTERNS
 
 SCORE_PATTERN = r"\b(?:CGPA|GPA)?\s*:?\s*(\d+(?:\.\d+)?)(?:\s*/\s*10|\s?%|\s*per\s?cent)?\b"
-
 DATE_PATTERN = r"\b(?:19|20)\d{2}\s*(?:-|–|to)?\s*(?:Present|Current|(?:19|20)\d{2})?\b"
 
 def extract_score(line: str):

@@ -2,13 +2,17 @@ import re
 
 SECTION_KEYWORDS = {
     "summary": ["summary", "profile", "objective"],
-    "education": ["education", "academic"],
-    "experience": ["experience", "employment", "work history"],
+    "education": ["education", "academic qualification"],
+    "experience": ["experience", "employment", "work history", "internship", "internships"],
+    "positions": ["positions", "positions of responsibility", "responsibility"],
     "skills": ["skills", "technical skills", "technologies"],
+    "interests": ["interests"],
     "projects": ["project", "projects"],
-    "certifications": ["certification", "certifications", "certificate", "certificates", "training", "coursework", "course", "courses"],
+    "certifications_and_courses": ["certification", "certifications", "certificates", "training", "coursework", "courses"],
     "achievements": ["achievement", "achievements", "awards", "honors"],
-    "competitions": ["competition", "competitions", "hackathon", "hackathons"],
+    "competitions": ["competitions", "hackathons"],
+    "languages": ["languages"],
+    "activities": ["hobbies", "activities", "extracurricular activities"]
 }
 
 def normalize_line(line: str) -> str:
