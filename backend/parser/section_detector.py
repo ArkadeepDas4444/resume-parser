@@ -6,7 +6,7 @@ SECTION_KEYWORDS = {
     "experience": ["experience", "employment", "work history"],
     "skills": ["skills", "technical skills", "technologies"],
     "projects": ["project", "projects"],
-    "certifications": ["certification", "certifications", "training", "coursework"],
+    "certifications": ["certification", "certifications", "certificate", "certificates", "training", "coursework", "course", "courses"],
     "achievements": ["achievement", "achievements", "awards", "honors"],
     "competitions": ["competition", "competitions", "hackathon", "hackathons"],
 }
