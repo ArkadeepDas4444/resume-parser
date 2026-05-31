@@ -9,6 +9,7 @@ DATE_PATTERN = (
     r"[a-z]*\.?\s+\d{4}|\d{4}))?\b"
 )
 
+YEAR_PATTERN = r"[-–\s]*\(?(?:19|20)\)?\d\d"
 LINK_HINTS = ["github", "website", "demo", "repo", "repository", "link"]
 
 def extract_date(line: str):
@@ -22,10 +23,10 @@ def is_project_title(line: str) -> bool:
         return False
 
     # Project titles are usually short and often have a date nearby.
-    if extract_date(line):
+    if extract_date(line) or re.search(YEAR_PATTERN, line):
         return True
 
-    return len(line.split()) <= 8
+    return False
 
 def clean_title(line: str, date: str | None) -> str:
     if date:

@@ -7,12 +7,13 @@ from parser.contact_extractor import extract_contact_info
 from parser.experience_extractor import extract_experience
 from parser.projects_extractor import extract_projects
 from parser.name_extractor import extract_name
+from parser.validator import validate_resume_data
 
-file_path = "backend/sample_resumes/Quebec-Resume-Light-Blue.docx"
+file_path = "backend/sample_resumes/My Resume Sample.pdf"
 
 raw_text = extract_text_from_file(file_path)
-# print("\n---------- RAW TEXT ----------\n")
-# print(raw_text + "\n")
+print("\n---------- RAW TEXT ----------\n")
+print(f"{raw_text}\n")
 
 processed = preprocess_resume_text(raw_text)
 print("\n---------- CLEAN TEXT ----------\n")
@@ -51,3 +52,17 @@ print(f"{projects}\n")
 name = extract_name(sections.get("header", []))
 print("\n---------- NAME ----------\n")
 print(f"{name}\n")
+
+resume_data = {
+    "name": name,
+    "contact": contact_info,
+    "skills": skills,
+    "education": education,
+    "experience": experience,
+    "projects": projects,
+}
+
+validated_data = validate_resume_data(resume_data)
+
+print("\n---------- FINAL RESUME DATA ----------")
+print(f"{validated_data}\n")

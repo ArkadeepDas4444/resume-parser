@@ -2,6 +2,25 @@ import re
 
 BULLET_CHARS = ["•", "●", "▪", "▫", "◦", "‣", "∙", "–", "—"]
 
+def remove_page_numbers(text: str) -> str:
+    lines = []
+
+    for line in text.split("\n"):
+        stripped = line.strip()
+
+        # Page 1
+        # Page 1 of 2
+        # 1 / 2
+        # 1 of 2
+        if re.fullmatch(r"[-–\s]*page\s+\d+(\s+of\s+\d+)?[-–\s]*", stripped, re.IGNORECASE):
+            continue
+        if re.fullmatch(r"[-–\s]*\d+\s*(/|of)\s*\d+[-–\s]*", stripped, re.IGNORECASE):
+            continue
+
+        lines.append(line)
+
+    return "\n".join(lines)
+
 def normalize_bullets(text: str) -> str:
     for bullet in BULLET_CHARS:
         text = text.replace(bullet, "-")
@@ -30,6 +49,7 @@ def clean_text(text: str) -> str:
     if not text:
         return ""
 
+    text = remove_page_numbers(text)
     text = normalize_bullets(text)
     text = normalize_whitespace(text)
     text = remove_excess_blank_lines(text)
