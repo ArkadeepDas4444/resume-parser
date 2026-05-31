@@ -5,8 +5,10 @@ from parser.skills_extractor import extract_skills
 from parser.education_extractor import extract_education
 from parser.contact_extractor import extract_contact_info
 from parser.experience_extractor import extract_experience
+from parser.projects_extractor import extract_projects
+from parser.name_extractor import extract_name
 
-file_path = "backend/sample_resumes/Admont-Resume-Green.docx"
+file_path = "backend/sample_resumes/Quebec-Resume-Light-Blue.docx"
 
 raw_text = extract_text_from_file(file_path)
 # print("\n---------- RAW TEXT ----------\n")
@@ -41,3 +43,11 @@ experience_lines = sections.get("experience", []) + sections.get("positions", []
 experience = extract_experience(experience_lines)
 print("\n---------- EXPERIENCE ----------\n")
 print(f"{experience}\n")
+
+projects = extract_projects(sections.get("projects", []))
+print("\n---------- PROJECTS ----------\n")
+print(f"{projects}\n")
+
+name = extract_name(sections.get("header", []))
+print("\n---------- NAME ----------\n")
+print(f"{name}\n")

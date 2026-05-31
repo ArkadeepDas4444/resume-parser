@@ -10,9 +10,9 @@ SECTION_KEYWORDS = {
     "projects": ["project", "projects"],
     "certifications_and_courses": ["certification", "certifications", "certificates", "training", "coursework", "courses"],
     "achievements": ["achievement", "achievements", "awards", "honors"],
-    "competitions": ["competitions", "hackathons"],
-    "languages": ["languages"],
-    "activities": ["hobbies", "activities", "extracurricular activities"]
+    "competitions": ["competition", "competitions", "hackathons"],
+    # "languages": ["languages"],
+    "activities": ["hobbies", "activities", "extracurricular", "extracurriculars"]
 }
 
 def normalize_line(line: str) -> str:
@@ -27,8 +27,8 @@ def is_probable_heading(line: str) -> bool:
     if not stripped:
         return False
 
-    # Avoid long normal sentences
-    if len(stripped.split()) > 6 or len(stripped) > 30:
+    # Avoid long normal sentences and lines starting is small letters
+    if len(stripped.split()) > 6 or len(stripped) > 30 or stripped[0].islower():
         return False
 
     return True
